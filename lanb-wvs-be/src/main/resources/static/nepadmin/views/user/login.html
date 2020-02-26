@@ -337,17 +337,37 @@ layui.use(['admin','helper','util','qrcode','form'],function(admin,helper,util,q
         
         loading.show();
 
-        admin.get({
-            api:'login',
+        /*admin.post({
+            url:'user/loginCheck',
             data:data.field,
             success:function(res){
-                admin.login(res.data.token,{ user:res.data.user },data.field.autoLogin != 'on');
-                admin.navigate('/');
+                console.log(res);
+                // admin.login(res.data.token,{ user:res.data.user },data.field.autoLogin != 'on');
+                // admin.navigate('/');
             },
             complete:function(){
                 //loading.hide();
             }
+        });*/
+
+        $.ajax({
+            type: "POST",
+            url:'user/loginCheck',
+            contentType: "application/json;charset=utf-8",
+            data:JSON.stringify({"userId":"admin","password":"21232f297a57a5a743894a0e4a801fc3"}),
+            dataType: "json",
+            success:function (message) {
+                console.log("提交成功"+JSON.stringify(message));
+                admin.login('21232f297a57a5a743894a0e4a801fc3',{ user: {
+                        "username":"小明"
+                    } }, data.field.autoLogin != 'on');
+                admin.navigate('/');
+            },
+            error:function (message) {
+                console.log("提交失败"+JSON.stringify(message));
+            }
         });
+
         return false;
     })
 

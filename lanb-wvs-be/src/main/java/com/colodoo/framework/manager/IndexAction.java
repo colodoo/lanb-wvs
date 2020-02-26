@@ -15,7 +15,7 @@ public class IndexAction {
 
     @GetMapping
     public String index() {
-        return "index";t
+        return "index";
     }
 
     @RequestMapping(value = "/notRole")
