@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@antv/g2": "^3.5.8-beta.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "calendar-months": "^1.0.1",
     "date-formatter": "^0.1.1",
     "dedent": "^0.7.0",
